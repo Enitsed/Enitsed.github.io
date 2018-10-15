@@ -4263,7 +4263,20 @@ cite {
 }
 
 .post_content img {
-  width: 100%;
+  width: 50%;
+  height: 30%;
+}
+
+.post_content center img {
+  -webkit-transition: 1s linear;
+  transition: 1s linear;
+}
+
+.post_content center img:hover {
+  width: 80%;
+  height: 40%;
+  -webkit-transition: 1s linear;
+  transition: 1s linear;
 }
 
 .post {
