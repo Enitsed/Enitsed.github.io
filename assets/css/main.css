@@ -4268,15 +4268,15 @@ cite {
 }
 
 .post_content center img {
-  -webkit-transition: 1s linear;
-  transition: 1s linear;
+  -webkit-transition: 0.5s ease-in;
+  transition: 0.5s ease-in;
 }
 
 .post_content center img:hover {
-  width: 80%;
-  height: 40%;
-  -webkit-transition: 1s linear;
-  transition: 1s linear;
+  width: 100%;
+  height: 80%;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
 }
 
 .post {
