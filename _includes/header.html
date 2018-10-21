@@ -1,8 +1,13 @@
 
 <header class="main_header">
-  <a href="{{site.baseurl}}/" class="logo">{% if site.logo %}{{site.logo}}{% else %}B<span>ef</span>{% endif %}</a>
+  <a href="{{site.baseurl}}/" class="logo">
+    <div class='console-container'>
+      <span id='text'></span><span>&nbsp;</span>
+    </div>
+  </a>
+  
   <nav class="main_menu">
-    <a href="{{site.baseurl}}/about/">About</a>
-    <a href="{{site.baseurl}}/contact/">Contact</a>
+    <a href="{{site.baseurl}}/about/">자기소개</a>
+    <a href="{{site.baseurl}}/contact/">이메일 보내기</a>
   </nav>
 </header> <!-- End Section Header -->
