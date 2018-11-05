@@ -3963,6 +3963,16 @@ cite {
   padding: 12px;
 }
 
+@media only screen and (max-width: 768px) {
+  .main_header .main_menu a {
+    -webkit-border-radius: 20px;
+            border-radius: 20px;
+  }
+  .main_header .main_menu a:hover {
+    background-color: #8e8e8e;
+  }
+}
+
 #banner {
   position: relative;
 }

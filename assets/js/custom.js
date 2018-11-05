@@ -48,5 +48,5 @@ function consoleText(words, id, colors) {
 }
 
 $(document).ready(function(){
-  consoleText(["뿡빵의 일기", "안녕하세요. 반갑습니다."],'text',['tomato','rebeccapurple','lightblue']);
+  consoleText(["뿡빵의 일기", "안녕하세요"],'text',['tomato','rebeccapurple','lightblue']);
 })
