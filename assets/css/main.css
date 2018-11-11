@@ -3926,6 +3926,7 @@ cite {
 }
 
 .main_header {
+  height: 100px;
   padding: 2rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3957,19 +3958,59 @@ cite {
 }
 
 .main_header nav a {
+  -webkit-border-radius: 20px;
+          border-radius: 20px;
+  border: 3px solid #9f9;
   color: #ffffff;
   text-decoration: none;
   margin-left: 1rem;
   padding: 12px;
 }
 
+.main_header nav a:hover {
+  background-color: #cfc;
+}
+
+.mobile_menu {
+  display: none;
+  visibility: hidden;
+}
+
 @media only screen and (max-width: 768px) {
-  .main_header .main_menu a {
-    -webkit-border-radius: 20px;
-            border-radius: 20px;
+  nav.main_menu {
+    display: none;
+    visibility: hidden;
   }
-  .main_header .main_menu a:hover {
-    background-color: #8e8e8e;
+  .mobile_menu {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    visibility: visible;
+  }
+  .mobile_menu ul {
+    width: 100%;
+    text: 100px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style: none !important;
+    vertical-align: middle;
+  }
+  .mobile_menu ul li.menu_button {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+  }
+  .mobile_menu ul li.menu_button:hover {
+    background-color: #efe;
+  }
+  .mobile_menu ul li.menu_button a {
+    text-decoration: none;
+    color: #99d;
+  }
+  .mobile_menu ul li.menu_button a:hover {
+    color: #444;
   }
 }
 

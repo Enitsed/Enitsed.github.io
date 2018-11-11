@@ -1,6 +1,7 @@
 // - - - - - - - - - - Header Styles - - - - - - - - - - //
 
 .main_header
+  height: 100px
   padding: 2rem
   display: flex
   justify-content: space-between
@@ -18,15 +19,40 @@
       font-weight: 400
   nav
     a
+      border-radius: 20px
+      border: 3px solid #9f9
       color: $white
       text-decoration: none
       margin-left: 1rem
       padding: 12px
-
+      &:hover
+        background-color: #cfc
+.mobile_menu
+  display: none
+  visibility: hidden
 @media only screen and (max-width : 768px)
-  .main_header
-    .main_menu
-      a
-        border-radius: 20px
+  nav.main_menu
+    display: none
+    visibility: hidden
+  .mobile_menu
+    display: flex
+    visibility: visible
+    ul
+      width: 100%
+      text: 100px
+      margin: 0
+      padding: 0
+      text-align: center
+      list-style: none !important
+      vertical-align: middle
+      li.menu_button
+        width: 100%
+        height: 50px
+        line-height: 50px
         &:hover
-          background-color: #8e8e8e
+          background-color: #efe
+        a
+          text-decoration: none
+          color: #99d
+          &:hover
+            color: #444
