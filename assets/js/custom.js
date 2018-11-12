@@ -49,4 +49,16 @@ function consoleText(words, id, colors) {
 
 $(document).ready(function(){
   consoleText(["반가워요", "어서와"],'text',['tomato','rebeccapurple','lightblue']);
-})
+
+  $("button.toggle_button").on('click', function() {
+    $(".mobile_menu").toggle(
+    function(){
+      $(".mobile_menu").addClass("show");
+    },
+    function(){
+      $(".mobile_menu").removeClass("hide");
+    }
+    );
+  });
+});
+

@@ -26,11 +26,24 @@
       margin-left: 1rem
       padding: 12px
       &:hover
+        color: #333
         background-color: #cfc
 .mobile_menu
   display: none
   visibility: hidden
+.toggle_button
+  display: none
+  visibility: hidden
+
 @media only screen and (max-width : 768px)
+  .toggle_button
+    visibility: visible
+    display: flex
+    border: 0px
+    border-color: #1c1c1c
+    color: #eee
+    background-color: #1c1c1c
+    cursor: pointer
   nav.main_menu
     display: none
     visibility: hidden

@@ -3968,6 +3968,7 @@ cite {
 }
 
 .main_header nav a:hover {
+  color: #333;
   background-color: #cfc;
 }
 
@@ -3976,7 +3977,24 @@ cite {
   visibility: hidden;
 }
 
+.toggle_button {
+  display: none;
+  visibility: hidden;
+}
+
 @media only screen and (max-width: 768px) {
+  .toggle_button {
+    visibility: visible;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    border: 0px;
+    border-color: #1c1c1c;
+    color: #eee;
+    background-color: #1c1c1c;
+    cursor: pointer;
+  }
   nav.main_menu {
     display: none;
     visibility: hidden;
