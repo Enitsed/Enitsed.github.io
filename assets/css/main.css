@@ -3958,9 +3958,6 @@ cite {
 }
 
 .main_header nav a {
-  -webkit-border-radius: 20px;
-          border-radius: 20px;
-  border: 3px solid #9f9;
   color: #ffffff;
   text-decoration: none;
   margin-left: 1rem;
@@ -3969,7 +3966,6 @@ cite {
 
 .main_header nav a:hover {
   color: #333;
-  background-color: #cfc;
 }
 
 .mobile_menu {
