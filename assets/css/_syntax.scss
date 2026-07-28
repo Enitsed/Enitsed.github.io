@@ -1,0 +1,12 @@
+// rouge 다크 하이라이트 (GitHub Dark 근사)
+.highlight { background: transparent; }
+.highlight .c, .highlight .c1, .highlight .cm { color: #8b949e; font-style: italic; } // comment
+.highlight .k, .highlight .kd, .highlight .kn { color: #ff7b72; } // keyword
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb { color: #a5d6ff; } // string
+.highlight .mi, .highlight .mf, .highlight .il { color: #79c0ff; } // number
+.highlight .nf, .highlight .nx { color: #d2a8ff; } // function/name
+.highlight .nt { color: #7ee787; } // tag
+.highlight .nb, .highlight .bp { color: #ffa657; } // builtin
+.highlight .o, .highlight .ow { color: #ff7b72; } // operator
+.highlight .nc, .highlight .nn { color: #ffa657; } // class/namespace
+.highlight .p { color: $text; } // punctuation

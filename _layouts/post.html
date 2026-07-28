@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="post section">
+  <p class="mono-label">
+    <a href="{{ '/blog/' | relative_url }}">← blog</a>
+  </p>
+  <h1 class="post__title">{{ page.title }}</h1>
+  <p class="post__meta mono-label">
+    {{ page.date | date: "%Y.%m.%d" }}
+    {% if page.tags %}· {% for t in page.tags %}#{{ t }} {% endfor %}{% endif %}
+  </p>
+  <div class="post__body">
+    {{ content }}
+  </div>
+</article>
