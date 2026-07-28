@@ -1,0 +1,20 @@
+{% assign p = include.project %}
+<article class="card">
+  <div class="card__thumb grad--{{ p.gradient | default: 'blue-purple' }}">
+    <span class="card__year mono-label">{{ p.year }}</span>
+  </div>
+  <div class="card__body">
+    <h3 class="card__title">{{ p.title }}</h3>
+    {% if p.role %}<p class="card__role mono-label">{{ p.role }}</p>{% endif %}
+    <p class="card__desc">{{ p.description }}</p>
+    {% if p.tech %}
+    <ul class="card__tech">
+      {% for t in p.tech %}<li>{{ t }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+    <div class="card__links">
+      {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">Live ↗</a>{% endif %}
+      {% if p.repo %}<a href="{{ p.repo }}" target="_blank" rel="noopener">Code ↗</a>{% endif %}
+    </div>
+  </div>
+</article>

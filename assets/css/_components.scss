@@ -1,0 +1,33 @@
+// ── 그라데이션 클래스 ──
+.grad--blue-purple  { @include gradient(blue-purple); }
+.grad--purple-pink  { @include gradient(purple-pink); }
+.grad--pink-orange  { @include gradient(pink-orange); }
+.grad--green-blue   { @include gradient(green-blue); }
+
+// ── 프로젝트 카드 ──
+.card {
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .18s ease, border-color .18s ease;
+}
+.card:hover { transform: translateY(-4px); border-color: $blue; }
+.card__thumb { height: 96px; position: relative; }
+.card__year { position: absolute; top: 10px; right: 12px; color: rgba(255,255,255,.85); }
+.card__body { padding: 16px; }
+.card__title { margin: 0 0 4px; font-size: 1.15rem; }
+.card__role { margin: 0 0 10px; font-size: 0.78rem; }
+.card__desc { margin: 0 0 12px; color: $text; font-size: 0.95rem; }
+.card__tech { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.card__tech li {
+  font-family: $mono; font-size: 0.72rem; color: $blue;
+  border: 1px solid $border; border-radius: 20px; padding: 2px 9px;
+}
+.card__links a { font-family: $mono; font-size: 0.85rem; margin-right: 14px; }
+
+// ── 섹션 헤더 ──
+.section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
+.section-head a { font-family: $mono; font-size: 0.85rem; color: $muted; }
+.section-head a:hover { color: $blue; text-decoration: none; }

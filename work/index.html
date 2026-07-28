@@ -1,0 +1,14 @@
+---
+layout: default
+title: Work
+description: 정슬기의 프로젝트 모음 — 백엔드, DevOps, 스마트컨트랙트.
+---
+<div class="section">
+  <p class="mono-label">// all projects</p>
+  <h1>Work</h1>
+  <div class="grid grid-2">
+    {% for p in site.data.projects %}
+      {% include project-card.html project=p %}
+    {% endfor %}
+  </div>
+</div>
