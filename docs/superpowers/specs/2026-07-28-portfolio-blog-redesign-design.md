@@ -2,22 +2,25 @@
 
 **날짜:** 2026-07-28
 **대상:** `Enitsed.github.io` (개인 사이트, GitHub Pages)
-**목표:** 기존 뚱이블로그(Gulp+Sass 스타터)를 걷어내고, 소프트웨어 개발자용 **포트폴리오 + 블로그**를 다크 테마로 새로 구축한다.
+**목표:** 기존 뚱이블로그(Gulp+Sass 스타터)를 걷어내고, **Backend / DevOps / Smart Contract 개발자** 포트폴리오 + 블로그를 다크 테마로 새로 구축한다.
+
+**주인:** 정슬기 (SeulGi Jeong) · Backend / DevOps / Smart Contract Developer · 경력 7년 1개월 · 현재 ㈜핑거랩스 팀장. (2026-07-28 이력서·경력기술서 기반)
 
 ---
 
 ## 1. 개요
 
-- **성격:** 포트폴리오가 메인, 블로그가 부. 소프트웨어/웹 개발 분야.
-- **디자인 톤:** 다크 터미널 색감 + 컬러풀 카드 레이아웃 (다크 모드 고정, 라이트 토글 없음).
+- **성격:** 포트폴리오가 메인, 블로그가 부. 백엔드/DevOps/스마트컨트랙트(Web2+Web3) 분야.
+- **디자인 톤:** 다크 터미널 색감 + 컬러풀 카드 레이아웃 (다크 모드 고정, 라이트 토글 없음). 블록체인/백엔드 이력과 무드가 잘 맞음.
 - **빌드/배포:** GitHub Pages 기본 Jekyll. `github-pages` gem으로 로컬 == 배포 환경 일치. push 시 자동 빌드.
-- **콘텐츠:** 기존 포스트·페이지 전부 삭제하고 백지에서 시작 (git 히스토리로 복구 가능). 프로젝트는 지금 플레이스홀더(샘플 3~4개)로 구조만 잡고, 추후 이력서 기반으로 `_data/projects.yml`을 채워 교체.
+- **콘텐츠:** 기존 포스트·페이지 전부 삭제하고 백지에서 시작 (git 히스토리로 복구 가능). 프로젝트는 이력서·경력기술서 기반 **실제 프로젝트**로 `_data/projects.yml`을 채운다(아래 3절).
+- **개인정보:** 이력서의 휴대폰·집주소·생년은 공개 사이트에 **노출하지 않는다.** 이메일·GitHub·소셜만 노출.
 
 ## 2. 사이트 구조 & 페이지
 
 | 경로 | 페이지 | 내용 |
 |------|--------|------|
-| `/` | 홈 | 히어로(`$ whoami` → Software Developer) + 대표 프로젝트 카드 그리드(featured) + 최신 글 3개 |
+| `/` | 홈 | 히어로(`$ whoami` → Backend · DevOps · Smart Contract Developer) + 대표 프로젝트 카드 그리드(featured) + 최신 글 3개 |
 | `/work/` | 작업물 | 전체 프로젝트 카드 그리드, 태그 필터 |
 | `/blog/` | 블로그 | 글 목록, 페이지네이션 12개 |
 | `/blog/:title/` | 글 상세 | 본문 + 코드 하이라이트 + (선택)댓글 |
@@ -28,26 +31,44 @@
 
 ## 3. 콘텐츠 모델
 
-**프로젝트** — `_data/projects.yml` 단일 파일로 관리 (이력서로 채우기 쉽게):
+**프로젝트** — `_data/projects.yml` 단일 파일로 관리. 스키마:
 
 ```yaml
-- title: Realtime Chat App
-  description: 저지연 웹소켓 채팅 서비스
-  tech: [React, WebSocket, Redis]
-  link: https://...            # 라이브 데모 (선택)
-  repo: https://github.com/... # 소스 (선택)
-  gradient: blue-purple        # 썸네일 색 (이미지 없을 때)
-  image:                       # 있으면 그라데이션 대신 사용 (선택)
-  featured: true               # 홈 노출 여부
-  year: 2024
+- title: 엑스클루시브 (Xclusive)
+  role: 백엔드/서버개발 · 팀장 · ㈜핑거랩스
+  description: NFT(ERC721)로 접근 권한을 인증하는 디지털 콘텐츠 스트리밍 플랫폼
+  tech: [TypeScript, Express, AWS(EKS/ECS), Docker, GitHub Actions, MySQL, Redis, Grafana, Prometheus]
+  highlights:
+    - 관리자·콘텐츠·주문 서비스 API 및 데이터 모델 설계/구현
+    - S3+Lambda+MediaConvert 자동 트랜스코딩, CloudFront Signed Cookie 유료 접근 제어
+    - EKS→ECS 무중단 전환으로 인프라 비용 절감
+  link: https://xclusive.market/ko
+  gradient: blue-purple
+  featured: true
+  year: 2022
 ```
 
-- 이미지 없으면 `gradient` 값으로 카드 썸네일 자동 생성 → 이력서만으로도 채워짐.
-- 초기엔 샘플 3~4개 포함.
+**초기 실제 프로젝트 목록** (이력서·경력기술서 기반, featured ★):
+
+1. ★ **엑스클루시브 (Xclusive)** — NFT 콘텐츠 스트리밍 플랫폼. TS/Express, MSA, 트랜스코딩, CloudFront Signed Cookie, EKS→ECS 전환. `link: xclusive.market/ko`
+2. ★ **네고홈 (NegoHome)** — 부동산 중개 플랫폼(인앱 결제 멤버십). Next.js, Prisma, MySQL, Jenkins CI/CD, AWS EC2. `link: app.negohome.net`
+3. ★ **선미야클럽 (Sunmiya Club)** — ERC721 NFT 멤버십. Solidity 스마트컨트랙트, TheGraph 이벤트 인덱싱, 오프라인 이벤트 NFT 인증.
+4. ★ **페이버릿/페이버스테이션** — 토크노믹스 Vault 채굴 컨트랙트, 구글/애플 계정+온체인 지갑 연동(ERC-4337 계정추상화), 서명 기능, Grafana/Prometheus 온체인 모니터링.
+5. **PeriFinance** — DeFi DEX Swap dApp. Solidity 기반 DeFi·Oracle 스마트컨트랙트 개발/배포.
+6. **하이퍼라이프케어** — PHP→TypeScript 포팅, AWS Cognito 인증 전환·회원 마이그레이션, RDS Blue-Green 무중단 업그레이드, 인프라 최적화.
+
+- 이미지 썸네일 없으면 `gradient` 값(blue-purple / pink-orange / green-blue 등)으로 카드 자동 생성.
+- `highlights`는 상세/호버 시 노출(선택), 카드 앞면은 title·role·description·tech.
 
 **블로그 글** — `_posts/YYYY-MM-DD-slug.md`, front matter: `title`, `date`, `tags`, `excerpt`, (선택)`image`.
 
-**사이트 정보** — `_config.yml`: 이름·소개·소셜 링크(기존 instagram/facebook/twitter/email 재사용).
+**사이트 정보** — `_config.yml`: 이름(정슬기/SeulGi Jeong), 직함(Backend · DevOps · Smart Contract Developer), 이메일(sllki1@naver.com), GitHub, 소셜 링크(기존 instagram/facebook/twitter 재사용). 전화·주소 제외.
+
+**About 페이지** — 프로필 소개 + 기술 스택(카테고리별) + 경력 타임라인 + 연락처.
+
+- 기술 스택 카테고리: **Language**(TypeScript, JavaScript, Java, Solidity) · **Backend**(Node.js/NestJS/Express/Fastify, Spring, TypeORM, Prisma) · **Data**(MySQL, PostgreSQL, Redis) · **DevOps**(AWS[EKS/ECS/EC2/RDS/S3/Lambda/CloudFront/Cognito], Docker, Kubernetes, GitHub Actions, Jenkins, AWS CDK) · **Observability**(Grafana, Prometheus, OpenTelemetry) · **Blockchain**(Solidity, ERC721/ERC-4337, DeFi, TheGraph, CN 노드).
+- 경력 타임라인: 핑거랩스(2022.02~현재, 팀장) → 하이퍼코퍼레이션(2024.09~2025.04) → 핀스프로토콜/태그앤유니버스/케이제이글로비스(2020~2022, PeriFinance) → 크루메이트(2018.03~2019.08, CJ Cookit).
+- 강점 요약: 인프라 비용 40% 절감 · Web2+Web3 융합 설계 · 스마트컨트랙트 실운영/업그레이드 · DevOps·관측 시스템 직접 설계.
 
 ## 4. 디자인 시스템
 
