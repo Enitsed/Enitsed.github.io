@@ -5,3 +5,4 @@ _site
 .superpowers/
 node_modules/
 yarn.lock
+vendor/
