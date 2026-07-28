@@ -31,3 +31,33 @@
 .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
 .section-head a { font-family: $mono; font-size: 0.85rem; color: $muted; }
 .section-head a:hover { color: $blue; text-decoration: none; }
+
+// ── 히어로 ──
+.hero { padding: 72px 0 40px; position: relative; overflow: hidden; }
+.hero__glow-a, .hero__glow-b { position: absolute; border-radius: 50%; filter: blur(10px); pointer-events: none; }
+.hero__glow-a { top: -80px; right: -60px; width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(31,111,235,.33), transparent 70%); }
+.hero__glow-b { bottom: -100px; left: -50px; width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(168,85,247,.22), transparent 70%); }
+.hero__inner { position: relative; z-index: 1; }
+.hero__title { font-size: clamp(2.2rem, 6vw, 3.4rem); margin: 10px 0 14px; }
+.hero__title .grad-text {
+  background: linear-gradient(90deg, $blue, $purple, $pink);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero__title .cursor { color: $green; }
+.hero__desc { color: $muted; font-size: 1.1rem; max-width: 520px; }
+.hero__cta { margin-top: 22px; display: flex; gap: 12px; }
+.btn {
+  font-family: $mono; font-size: 0.9rem; padding: 9px 16px; border-radius: 10px;
+  border: 1px solid $border; color: $heading; background: $surface;
+}
+.btn:hover { border-color: $blue; text-decoration: none; }
+.btn--primary { border-color: $blue; color: $blue; }
+
+// ── 최신 글 목록(행) ──
+.post-row { display: flex; justify-content: space-between; gap: 16px;
+  padding: 14px 0; border-bottom: 1px solid $border; }
+.post-row:hover .post-row__title { color: $blue; }
+.post-row__title { color: $heading; font-weight: 500; }
+.post-row__date { color: $muted; font-family: $mono; font-size: 0.85rem; white-space: nowrap; }

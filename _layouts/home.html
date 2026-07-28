@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<section class="hero">
+  <span class="hero__glow-a"></span>
+  <span class="hero__glow-b"></span>
+  <div class="hero__inner">
+    <p class="mono-label">$ whoami</p>
+    <h1 class="hero__title">Backend · DevOps<br><span class="grad-text">Smart Contract</span> Developer<span class="cursor">_</span></h1>
+    <p class="hero__desc">{{ site.description }}</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="{{ '/work/' | relative_url }}">View Work</a>
+      <a class="btn" href="{{ '/about/' | relative_url }}">About Me</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="mono-label">// selected work</p>
+    <a href="{{ '/work/' | relative_url }}">all →</a>
+  </div>
+  <div class="grid grid-2">
+    {% assign featured = site.data.projects | where: "featured", true %}
+    {% for p in featured %}
+      {% include project-card.html project=p %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="mono-label">// from the blog</p>
+    <a href="{{ '/blog/' | relative_url }}">all →</a>
+  </div>
+  {% for post in site.posts limit: 3 %}
+    <a class="post-row" href="{{ post.url | relative_url }}">
+      <span class="post-row__title">{{ post.title }}</span>
+      <span class="post-row__date">{{ post.date | date: "%Y.%m" }}</span>
+    </a>
+  {% endfor %}
+</section>
