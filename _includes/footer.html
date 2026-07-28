@@ -1,0 +1,10 @@
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__social">
+      {% for s in site.data.social %}
+        <a href="{{ s.url }}"{% unless s.url contains 'mailto' %} target="_blank" rel="noopener"{% endunless %}>{{ s.name }}</a>
+      {% endfor %}
+    </div>
+    <p class="mono-label">© {{ 'now' | date: "%Y" }} {{ site.author }} · built with Jekyll</p>
+  </div>
+</footer>

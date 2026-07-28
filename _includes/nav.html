@@ -1,0 +1,10 @@
+<nav class="nav">
+  <div class="container nav__inner">
+    <a class="nav__logo" href="{{ '/' | relative_url }}">seulgi.dev</a>
+    <div class="nav__links">
+      <a href="{{ '/work/' | relative_url }}"{% if page.url contains '/work' %} class="is-active"{% endif %}>work</a>
+      <a href="{{ '/blog/' | relative_url }}"{% if page.url contains '/blog' %} class="is-active"{% endif %}>blog</a>
+      <a href="{{ '/about/' | relative_url }}"{% if page.url contains '/about' %} class="is-active"{% endif %}>about</a>
+    </div>
+  </div>
+</nav>
