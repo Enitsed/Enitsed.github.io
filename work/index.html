@@ -12,3 +12,16 @@ description: 정슬기의 프로젝트 모음 — 백엔드, DevOps, 스마트�
     {% endfor %}
   </div>
 </div>
+
+<div class="section">
+  <div class="section-head">
+    <p class="mono-label">// side projects</p>
+    <a href="https://github.com/Enitsed" target="_blank" rel="noopener">github ↗</a>
+  </div>
+  <p class="section-note">회사 프로젝트 외에 개인적으로 만들고 실험한 오픈소스 저장소들입니다.</p>
+  <div class="grid grid-2">
+    {% for p in site.data.side_projects %}
+      {% include project-card.html project=p %}
+    {% endfor %}
+  </div>
+</div>

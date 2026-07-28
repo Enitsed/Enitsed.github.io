@@ -1,0 +1,33 @@
+# 개인/사이드 프로젝트 — GitHub(github.com/Enitsed) 공개 저장소 기반. README 내용으로 작성.
+- title: Trading Bot (RSI Scalper)
+  role: 개인 프로젝트 · TypeScript
+  description: ccxt로 CSV 캔들을 백테스트하고 Binance·Upbit에서 실시간(또는 모의)으로 운용하는 RSI 평균회귀 스캘핑 봇. 쿨다운·일일 손실 제한·드라이런 지원.
+  tech: [TypeScript, ccxt, pnpm, PostgreSQL]
+  repo: https://github.com/Enitsed/trading-bot-for-fun
+  gradient: pink-orange
+  year: 2025
+
+- title: Kotlin API Playground
+  role: 학습 프로젝트 · Kotlin
+  description: 동일한 Users REST API를 Ktor와 Spring Boot 두 방식으로 구현해 비교한 예제. TypeScript/NestJS에서 Kotlin/JVM 생태계로 넘어가기 위한 학습용.
+  tech: [Kotlin, Ktor, Spring Boot, MySQL]
+  repo: https://github.com/Enitsed/kotlin-playground
+  gradient: green-blue
+  year: 2026
+
+- title: Uncharted Login
+  role: 개인 프로젝트 · Windows 데스크톱
+  description: 대항해시대 온라인 계정 관리·자동 로그인과 화면 OCR 기반 항해 내비게이션(위치 추적·침로선·ETA·교역품 정보)을 제공하는 Windows 데스크톱 앱.
+  tech: [Windows Desktop, OCR]
+  repo: https://github.com/Enitsed/dho-login-releases
+  link: https://github.com/Enitsed/dho-login-releases/releases/latest
+  gradient: blue-purple
+  year: 2026
+
+- title: LangChain + React
+  role: 실험 프로젝트 · TypeScript
+  description: Bun·React·Tailwind·shadcn 스택 위에서 LangChain을 다뤄본 프런트엔드 실험 프로젝트.
+  tech: [TypeScript, React, Bun, LangChain]
+  repo: https://github.com/Enitsed/langchain-with-react
+  gradient: purple-pink
+  year: 2026

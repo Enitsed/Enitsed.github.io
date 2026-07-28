@@ -31,6 +31,7 @@
 .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
 .section-head a { font-family: $mono; font-size: 0.85rem; color: $muted; }
 .section-head a:hover { color: $blue; text-decoration: none; }
+.section-note { color: $muted; margin: -6px 0 18px; font-size: 0.95rem; }
 
 // ── 히어로 ──
 .hero { padding: 72px 0 40px; position: relative; overflow: hidden; }
