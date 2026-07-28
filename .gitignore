@@ -2,5 +2,6 @@ _site
 .sass-cache
 .jekyll-metadata
 .jekyll-cache/
+.superpowers/
 node_modules/
 yarn.lock
