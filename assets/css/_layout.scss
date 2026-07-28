@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  max-width: $maxw;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section { margin: 56px 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+}

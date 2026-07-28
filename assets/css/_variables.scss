@@ -1,0 +1,30 @@
+// ── 색상 토큰 ──
+$bg:      #0d1117;
+$surface: #161b22;
+$border:  #30363d;
+$text:    #c9d1d9;
+$muted:   #8b949e;
+$heading: #e6edf3;
+
+$blue:   #58a6ff;
+$purple: #a855f7;
+$green:  #3fb950;
+$pink:   #ec4899;
+$orange: #fb923c;
+
+// ── 폰트 ──
+$sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$mono: "JetBrains Mono", "SF Mono", Consolas, Menlo, monospace;
+
+// ── 레이아웃 ──
+$radius: 14px;
+$maxw: 960px;
+
+// ── 그라데이션 이름 → 색 ──
+@mixin gradient($name) {
+  @if $name == blue-purple   { background: linear-gradient(135deg, #1f6feb, $purple); }
+  @else if $name == purple-pink { background: linear-gradient(135deg, $purple, $pink); }
+  @else if $name == pink-orange { background: linear-gradient(135deg, $pink, $orange); }
+  @else if $name == green-blue  { background: linear-gradient(135deg, $green, $blue); }
+  @else { background: linear-gradient(135deg, $blue, $purple); }
+}

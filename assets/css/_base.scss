@@ -1,0 +1,30 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: $bg;
+  color: $text;
+  font-family: $sans;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { color: $heading; font-weight: 700; line-height: 1.2; }
+
+a { color: $blue; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code, pre { font-family: $mono; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+// 모노 라벨 (예: `$ whoami`, `// selected work`)
+.mono-label {
+  font-family: $mono;
+  color: $muted;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
