@@ -97,3 +97,21 @@
   padding: 16px; overflow-x: auto; margin: 0 0 20px;
 }
 .post__body pre code { background: none; border: none; padding: 0; color: $text; }
+
+// ── About ──
+.about__en { color: $muted; font-weight: 400; font-size: 0.6em; }
+.about__lead { font-size: 1.1rem; color: $text; max-width: 620px; margin: 12px 0 40px; }
+.about h2 { margin: 40px 0 16px; }
+.skills { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 640px) { .skills { grid-template-columns: 1fr 1fr; } }
+.skills__group { background: $surface; border: 1px solid $border; border-radius: $radius; padding: 14px 16px; }
+.skills__label { margin: 0 0 10px; font-size: 0.95rem; color: $blue; }
+.skills__group ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.skills__group li { font-family: $mono; font-size: 0.75rem; color: $text; border: 1px solid $border; border-radius: 20px; padding: 2px 9px; }
+.timeline__item { display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid $border; }
+.timeline__period { min-width: 130px; white-space: nowrap; }
+.timeline__body h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.timeline__role { margin: 0 0 6px; color: $purple; }
+.timeline__body p { margin: 0; color: $muted; }
+.about__contact a { font-family: $mono; margin-right: 18px; color: $blue; }
+@media (max-width: 639px) { .timeline__item { flex-direction: column; gap: 4px; } }

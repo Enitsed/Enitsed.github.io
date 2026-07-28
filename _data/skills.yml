@@ -1,0 +1,12 @@
+- group: Language
+  items: [TypeScript, JavaScript, Java, Solidity]
+- group: Backend
+  items: ["Node.js", NestJS, Express, Fastify, Spring, TypeORM, Prisma]
+- group: Data
+  items: [MySQL, PostgreSQL, Redis]
+- group: DevOps
+  items: [AWS, Docker, Kubernetes, "GitHub Actions", Jenkins, "AWS CDK"]
+- group: Observability
+  items: [Grafana, Prometheus, OpenTelemetry]
+- group: Blockchain
+  items: [Solidity, "ERC721", "ERC-4337", DeFi, TheGraph, "CN Node"]

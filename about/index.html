@@ -1,0 +1,45 @@
+---
+layout: default
+title: About
+description: 정슬기(SeulGi Jeong) — 백엔드/DevOps/스마트컨트랙트 개발자 소개.
+---
+<div class="section about">
+  <p class="mono-label">$ cat about.md</p>
+  <h1>정슬기 <span class="about__en">SeulGi Jeong</span></h1>
+  <p class="about__lead">
+    백엔드 개발자로 7년 넘게 일하며 Node.js/TypeScript 애플리케이션과 AWS 인프라를 설계·운영했습니다.
+    Web2와 Web3를 아우르는 서비스를 만들고, 스마트컨트랙트를 실제로 운영·업그레이드한 경험이 있습니다.
+    단순한 기술 도입이 아니라 실제 필요성과 비용·복잡도를 기준으로 인프라와 시스템을 설계합니다.
+  </p>
+
+  <h2 class="mono-label">// skills</h2>
+  <div class="skills">
+    {% for g in site.data.skills %}
+    <div class="skills__group">
+      <h3 class="skills__label">{{ g.group }}</h3>
+      <ul>{% for i in g.items %}<li>{{ i }}</li>{% endfor %}</ul>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h2 class="mono-label">// experience</h2>
+  <div class="timeline">
+    {% for t in site.data.timeline %}
+    <div class="timeline__item">
+      <div class="timeline__period mono-label">{{ t.period }}</div>
+      <div class="timeline__body">
+        <h3>{{ t.org }}</h3>
+        <p class="timeline__role mono-label">{{ t.role }}</p>
+        <p>{{ t.detail }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h2 class="mono-label">// contact</h2>
+  <div class="about__contact">
+    {% for s in site.data.social %}
+      <a href="{{ s.url }}"{% unless s.url contains 'mailto' %} target="_blank" rel="noopener"{% endunless %}>{{ s.name }}</a>
+    {% endfor %}
+  </div>
+</div>
