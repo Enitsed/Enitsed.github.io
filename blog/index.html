@@ -1,0 +1,26 @@
+---
+layout: default
+title: Blog
+description: 정슬기의 개발 블로그 — 백엔드, 인프라, 스마트컨트랙트.
+---
+<div class="section">
+  <p class="mono-label">// all posts</p>
+  <h1>Blog</h1>
+  <div class="post-list">
+    {% for post in paginator.posts %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </div>
+
+  {% if paginator.total_pages > 1 %}
+  <nav class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">← prev</a>
+    {% endif %}
+    <span class="pagination__info mono-label">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">next →</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+</div>

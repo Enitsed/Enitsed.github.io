@@ -1,0 +1,15 @@
+{% assign post = include.post %}
+<article class="post-item">
+  <a class="post-item__link" href="{{ post.url | relative_url }}">
+    <div class="post-item__head">
+      <h3 class="post-item__title">{{ post.title }}</h3>
+      <span class="post-item__date mono-label">{{ post.date | date: "%Y.%m.%d" }}</span>
+    </div>
+    {% if post.excerpt %}<p class="post-item__excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>{% endif %}
+    {% if post.tags %}
+    <ul class="post-item__tags">
+      {% for t in post.tags %}<li>#{{ t }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+  </a>
+</article>

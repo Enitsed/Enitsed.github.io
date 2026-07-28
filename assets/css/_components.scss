@@ -61,3 +61,18 @@
 .post-row:hover .post-row__title { color: $blue; }
 .post-row__title { color: $heading; font-weight: 500; }
 .post-row__date { color: $muted; font-family: $mono; font-size: 0.85rem; white-space: nowrap; }
+
+// ── 블로그 목록 ──
+.post-item { border-bottom: 1px solid $border; }
+.post-item__link { display: block; padding: 20px 0; }
+.post-item__link:hover { text-decoration: none; }
+.post-item__link:hover .post-item__title { color: $blue; }
+.post-item__head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+.post-item__title { margin: 0; color: $heading; font-size: 1.2rem; }
+.post-item__date { white-space: nowrap; }
+.post-item__excerpt { color: $muted; margin: 8px 0 10px; }
+.post-item__tags { list-style: none; display: flex; gap: 8px; padding: 0; margin: 0; flex-wrap: wrap; }
+.post-item__tags li { font-family: $mono; font-size: 0.72rem; color: $purple; }
+
+.pagination { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 40px; }
+.pagination a { font-family: $mono; color: $blue; }
