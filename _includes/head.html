@@ -105,6 +105,6 @@
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
 
-{% if jekyll.environment == "production" and site.ga4_id != "" %}
+{% if jekyll.environment == "production" and site.ga4_id != blank %}
   {% include analytics.html %}
 {% endif %}
