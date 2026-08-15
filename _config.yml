@@ -8,6 +8,9 @@ url: "https://enitsed.github.io"
 baseurl: ""
 lang: ko
 
+# Google Analytics 4 측정 ID (G-XXXXXXXXXX). 비어 있으면 로드하지 않음.
+ga4_id: ""
+
 # 소셜 공유 기본 이미지 (페이지 프론트매터의 image: 로 개별 재정의 가능)
 og_image: /assets/img/og-default.png
 og_image_width: 1200
