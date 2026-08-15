@@ -1,0 +1,41 @@
+// post navigation & reading time (task B)
+
+// ── 읽는 시간 (글 메타 줄) ──
+.post__reading-time { color: $muted; white-space: nowrap; }
+
+// ── 이전/다음 글 네비게이션 ──
+.post-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid $border;
+}
+
+.post-nav__link {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius;
+  padding: 14px 16px;
+  transition: transform .18s ease, border-color .18s ease;
+}
+.post-nav__link:hover { transform: translateY(-2px); border-color: $blue; text-decoration: none; }
+.post-nav__link:hover .post-nav__title { color: $blue; }
+
+// 한쪽만 있어도 자리가 유지되도록 열을 고정한다
+.post-nav__link--prev { grid-column: 1; }
+.post-nav__link--next { grid-column: 2; text-align: right; align-items: flex-end; }
+
+.post-nav__label { display: block; }
+.post-nav__title { color: $heading; font-weight: 500; font-size: 1.02rem; line-height: 1.4; }
+
+@media (max-width: 639px) {
+  .post-nav { grid-template-columns: 1fr; margin-top: 36px; }
+  .post-nav__link--prev,
+  .post-nav__link--next { grid-column: 1; }
+  .post-nav__link--next { text-align: left; align-items: flex-start; }
+}

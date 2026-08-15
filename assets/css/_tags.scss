@@ -1,0 +1,79 @@
+// tag archive & tag chips (task C)
+
+// ── 태그 칩 목록 ──
+.tag-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 24px 0 8px;
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid $border;
+  border-radius: 999px;
+  background: $surface;
+  font-family: $mono;
+  font-size: 0.78rem;
+  color: $purple;
+  line-height: 1;
+}
+
+.tag-chip:hover {
+  border-color: $purple;
+  color: $heading;
+  text-decoration: none;
+}
+
+.tag-chip__count {
+  color: $muted;
+  font-size: 0.7rem;
+}
+
+.tag-chip:hover .tag-chip__count { color: $muted; }
+
+// ── 태그별 섹션 ──
+.tag-section {
+  margin-top: 48px;
+  scroll-margin-top: 90px; // 고정 네비게이션에 제목이 가리지 않도록
+}
+
+.tag-section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid $border;
+  padding-bottom: 8px;
+}
+
+.tag-section__title {
+  margin: 0;
+  font-family: $mono;
+  font-size: 1.05rem;
+  color: $purple;
+}
+
+.tag-section__count { white-space: nowrap; }
+
+// ── post-card 태그 링크화 보정 ──
+// 태그 목록이 a.post-item__link 밖(형제)으로 빠졌으므로
+// 기존 카드와 동일한 여백(위 20px / 아래 20px, 요약과 10px 간격)을 유지한다.
+.post-item { padding-bottom: 20px; }
+.post-item__link { padding: 20px 0 0; }
+
+.post-item__tags a {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.post-item__tags a:hover {
+  color: $heading;
+  text-decoration: underline;
+}

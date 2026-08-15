@@ -1,0 +1,9 @@
+{%- comment -%}
+읽는 시간 계산. 한국어 본문은 number_of_words 가 부정확해서 글자 수 기준으로 계산한다.
+분당 500자, 올림, 최소 1분. 사용: {% include reading-time.html content=content %}
+{%- endcomment -%}
+{%- assign rt_chars = include.content | strip_html | strip_newlines | size -%}
+{%- assign rt_min = rt_chars | plus: 499 | divided_by: 500 -%}
+{%- if rt_min < 1 -%}{%- assign rt_min = 1 -%}{%- endif -%}
+{{- rt_min }}분 읽기
+{%- comment -%} 끝의 개행을 제거한다 {%- endcomment -%}

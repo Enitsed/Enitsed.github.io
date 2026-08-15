@@ -1,0 +1,19 @@
+{%- comment -%}
+글 하단 이전/다음 네비게이션. 한쪽만 있어도 grid-column 지정으로 자리가 유지된다.
+{%- endcomment -%}
+{%- if page.previous or page.next -%}
+<nav class="post-nav" aria-label="이전 다음 글">
+  {%- if page.previous %}
+  <a class="post-nav__link post-nav__link--prev" href="{{ page.previous.url | relative_url }}" rel="prev">
+    <span class="post-nav__label mono-label">← 이전 글</span>
+    <span class="post-nav__title">{{ page.previous.title | escape }}</span>
+  </a>
+  {%- endif %}
+  {%- if page.next %}
+  <a class="post-nav__link post-nav__link--next" href="{{ page.next.url | relative_url }}" rel="next">
+    <span class="post-nav__label mono-label">다음 글 →</span>
+    <span class="post-nav__title">{{ page.next.title | escape }}</span>
+  </a>
+  {%- endif %}
+</nav>
+{%- endif -%}

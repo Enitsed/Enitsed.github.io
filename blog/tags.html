@@ -1,0 +1,44 @@
+---
+layout: default
+title: Tags
+permalink: /blog/tags/
+description: 태그별로 모아 본 정슬기의 개발 블로그 글 목록.
+---
+<div class="section">
+  <p class="mono-label">// browse by tag</p>
+  <h1>Tags</h1>
+
+  {% assign tag_pairs = site.tags | sort %}
+
+  <ul class="tag-chips">
+    {% for tag in tag_pairs %}
+      {% assign tag_name = tag[0] %}
+      {% assign tag_slug = tag_name | slugify %}
+      {% if tag_slug == '' %}{% assign tag_slug = forloop.index %}{% endif %}
+      <li>
+        <a class="tag-chip" href="#tag-{{ tag_slug }}">
+          <span class="tag-chip__name">#{{ tag_name }}</span>
+          <span class="tag-chip__count">{{ tag[1] | size }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% for tag in tag_pairs %}
+    {% assign tag_name = tag[0] %}
+    {% assign tag_slug = tag_name | slugify %}
+    {% if tag_slug == '' %}{% assign tag_slug = forloop.index %}{% endif %}
+    {% assign tag_posts = tag[1] | sort: 'date' | reverse %}
+    <section class="tag-section" id="tag-{{ tag_slug }}">
+      <div class="tag-section__head">
+        <h2 class="tag-section__title">#{{ tag_name }}</h2>
+        <span class="tag-section__count mono-label">{{ tag_posts | size }} posts</span>
+      </div>
+      <div class="post-list">
+        {% for post in tag_posts %}
+          {% include post-card.html post=post %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</div>

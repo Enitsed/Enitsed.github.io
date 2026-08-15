@@ -6,10 +6,14 @@
       <span class="post-item__date mono-label">{{ post.date | date: "%Y.%m.%d" }}</span>
     </div>
     {% if post.excerpt %}<p class="post-item__excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>{% endif %}
-    {% if post.tags %}
-    <ul class="post-item__tags">
-      {% for t in post.tags %}<li>#{{ t }}</li>{% endfor %}
-    </ul>
-    {% endif %}
   </a>
+  {% if post.tags and post.tags != empty %}
+  <ul class="post-item__tags">
+    {% for t in post.tags %}
+      {% assign tag_slug = t | slugify %}
+      {% if tag_slug == '' %}{% assign tag_slug = t %}{% endif %}
+      <li><a href="{{ '/blog/tags/' | relative_url }}#tag-{{ tag_slug }}">#{{ t }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
 </article>
