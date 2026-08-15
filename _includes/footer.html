@@ -5,6 +5,9 @@
         <a href="{{ s.url }}"{% unless s.url contains 'mailto' %} target="_blank" rel="noopener"{% endunless %}>{{ s.name }}</a>
       {% endfor %}
     </div>
-    <p class="mono-label">© {{ 'now' | date: "%Y" }} {{ site.author }} · built with Jekyll</p>
+    <p class="mono-label">
+      © {{ 'now' | date: "%Y" }} {{ site.author }} · built with Jekyll ·
+      <a href="{{ '/privacy/' | relative_url }}">개인정보처리방침</a>
+    </p>
   </div>
 </footer>

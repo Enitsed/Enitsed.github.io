@@ -104,3 +104,7 @@
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+
+{% if jekyll.environment == "production" and site.ga4_id and site.ga4_id != "" %}
+  {% include analytics.html %}
+{% endif %}
