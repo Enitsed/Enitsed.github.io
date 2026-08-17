@@ -1,0 +1,201 @@
+---
+layout: default
+title: Stars
+description: GitHub 별표 저장소 2,052개를 4단계로 분류한 색인. 주제별로 좁혀 보고 검색할 수 있습니다.
+---
+<div class="section stars">
+  <p class="mono-label">$ ls ~/.stars</p>
+  <h1>Stars</h1>
+  <p class="section-note">
+    지금까지 별표한 저장소를 <strong id="stars-total">…</strong>개 모아 대분류 · 중분류 · 소분류 · 세분류
+    <strong id="stars-levels">…</strong> 단계로 정리했습니다.
+    왼쪽 분류를 누르면 그 아래 단계가 펼쳐지고 목록이 좁혀집니다.
+    <a href="https://github.com/stars/Enitsed" target="_blank" rel="noopener">GitHub Stars ↗</a>
+  </p>
+
+  <div class="stars__controls">
+    <input type="search" id="stars-q" class="stars__search"
+           placeholder="저장소 이름 · 설명 · 언어로 검색" aria-label="검색">
+    <select id="stars-lang" class="stars__lang" aria-label="언어 필터">
+      <option value="">모든 언어</option>
+    </select>
+    <span id="stars-crumb" class="stars__crumb">
+      <span class="stars__crumb-path"></span>
+      <button type="button" id="stars-clear" aria-label="분류 선택 해제">✕</button>
+    </span>
+    <span id="stars-hits" class="stars__hits"></span>
+  </div>
+
+  <div class="stars__shell">
+    <nav class="stars__rail" aria-label="분류">
+      <div class="stars__rail-head">
+        <span class="mono-label">분류</span>
+        <button type="button" id="stars-reset" class="stars__reset">전체</button>
+      </div>
+      <ul class="stars__tree" id="stars-tree"></ul>
+    </nav>
+    <div id="stars-main">
+      <p class="stars__empty">불러오는 중…</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var PAGE = 200;                       // 한 번에 그리는 행 수 (2천 행을 한꺼번에 붙이면 느려진다)
+  var data = null, sel = -1, shown = PAGE;
+  var $ = function (id) { return document.getElementById(id); };
+  var tree = $('stars-tree'), main = $('stars-main'), q = $('stars-q'),
+      langSel = $('stars-lang'), hits = $('stars-hits'),
+      crumb = $('stars-crumb'), crumbPath = crumb.querySelector('.stars__crumb-path');
+  var esc = function (s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  };
+
+  fetch('{{ "/assets/data/starred.json" | relative_url }}')
+    .then(function (r) { return r.json(); })
+    .then(function (d) { data = d; init(); })
+    .catch(function () {
+      main.innerHTML = '<p class="stars__empty">목록을 불러오지 못했습니다.</p>';
+    });
+
+  function ancestors(i) {                // 노드 i 와 그 조상 id 집합
+    var out = [];
+    while (i >= 0) { out.push(i); i = data.nodes[i].p; }
+    return out;
+  }
+  function isUnder(leaf, node) {         // leaf 가 node 의 하위인가
+    if (node < 0) return true;
+    var i = leaf;
+    while (i >= 0) { if (i === node) return true; i = data.nodes[i].p; }
+    return false;
+  }
+  function pathOf(i) {
+    return ancestors(i).reverse().map(function (n) { return data.nodes[n].n; }).join(' › ');
+  }
+
+  function init() {
+    $('stars-total').textContent = data.total.toLocaleString();
+    $('stars-levels').textContent = data.levels.join(' / ');
+    var langs = {};
+    data.repos.forEach(function (r) { if (r[1]) langs[r[1]] = (langs[r[1]] || 0) + 1; });
+    Object.keys(langs).sort().forEach(function (l) {
+      var o = document.createElement('option');
+      o.value = o.textContent = l;
+      langSel.appendChild(o);
+    });
+    buildTree();
+    q.addEventListener('input', debounce(function () { shown = PAGE; render(); }, 120));
+    langSel.addEventListener('change', function () { shown = PAGE; render(); });
+    $('stars-reset').addEventListener('click', function () { select(-1); });
+    $('stars-clear').addEventListener('click', function () { select(-1); });
+    render();
+  }
+
+  function debounce(fn, ms) {
+    var t;
+    return function () { clearTimeout(t); t = setTimeout(fn, ms); };
+  }
+
+  function buildTree() {
+    var kids = {};
+    data.nodes.forEach(function (n) { (kids[n.p] = kids[n.p] || []).push(n); });
+    function ul(parent, cls) {
+      var list = document.createElement('ul');
+      list.className = cls;
+      (kids[parent] || []).forEach(function (n) {
+        var li = document.createElement('li');
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'stars__node lv' + n.l;
+        b.dataset.i = n.i;
+        var hasKids = !!kids[n.i];
+        b.innerHTML = '<span class="stars__caret' + (hasKids ? '' : ' is-leaf') + '" aria-hidden="true"></span>' +
+                      '<span class="stars__label">' + esc(n.n) + '</span>' +
+                      '<span class="stars__n" data-c="' + n.i + '">' + n.c + '</span>';
+        if (hasKids) b.setAttribute('aria-expanded', 'false');
+        b.addEventListener('click', function () {
+          select(n.i === sel ? data.nodes[n.i].p : n.i);
+        });
+        li.appendChild(b);
+        if (hasKids) li.appendChild(ul(n.i, 'stars__kids'));
+        list.appendChild(li);
+      });
+      return list;
+    }
+    tree.replaceWith(ul(-1, 'stars__tree'));
+    tree = document.querySelector('.stars__tree');
+    tree.id = 'stars-tree';
+  }
+
+  function select(i) {
+    sel = i;
+    var open = ancestors(i);
+    document.querySelectorAll('.stars__node').forEach(function (b) {
+      var id = +b.dataset.i;
+      b.classList.toggle('is-sel', id === sel);
+      b.classList.toggle('is-anc', sel >= 0 && id !== sel && open.indexOf(id) !== -1);
+      var kids = b.parentNode.querySelector('.stars__kids');
+      if (kids) {
+        var want = open.indexOf(id) !== -1;
+        kids.classList.toggle('is-open', want);
+        b.setAttribute('aria-expanded', want ? 'true' : 'false');
+      }
+    });
+    crumb.classList.toggle('is-on', sel >= 0);
+    crumbPath.textContent = sel >= 0 ? pathOf(sel) : '';
+    shown = PAGE;
+    render();
+  }
+
+  function render() {
+    var term = q.value.trim().toLowerCase(), lang = langSel.value;
+    var hit = [], tally = {};
+    data.repos.forEach(function (r) {
+      if (lang && r[1] !== lang) return;
+      if (term && (r[0] + ' ' + r[3] + ' ' + r[1]).toLowerCase().indexOf(term) === -1) return;
+      ancestors(r[4]).forEach(function (a) { tally[a] = (tally[a] || 0) + 1; });
+      if (isUnder(r[4], sel)) hit.push(r);
+    });
+    document.querySelectorAll('.stars__n').forEach(function (el) {
+      var n = tally[el.dataset.c] || 0;
+      el.textContent = n;
+      el.parentNode.classList.toggle('is-dim', n === 0);
+    });
+    hits.textContent = hit.length.toLocaleString() + ' / ' + data.total.toLocaleString();
+
+    if (!hit.length) {
+      main.innerHTML = '<p class="stars__empty">조건에 맞는 저장소가 없습니다.</p>';
+      return;
+    }
+    var groups = {}, order = [];
+    hit.slice(0, shown).forEach(function (r) {
+      if (!groups[r[4]]) { groups[r[4]] = []; order.push(r[4]); }
+      groups[r[4]].push(r);
+    });
+    var html = order.map(function (leaf) {
+      var rows = groups[leaf].map(function (r) {
+        return '<li class="stars__row">' +
+          '<a class="stars__repo" href="https://github.com/' + esc(r[0]) + '" target="_blank" rel="noopener">' + esc(r[0]) + '</a>' +
+          '<span class="stars__meta">' +
+            '<span class="stars__lang">' + esc(r[1] || '—') + '</span>' +
+            '<span class="stars__stars">★ ' + (r[2] >= 1000 ? (r[2] / 1000).toFixed(1).replace('.0', '') + 'k' : r[2]) + '</span>' +
+          '</span>' +
+          '<span class="stars__desc">' + esc(r[3]) + '</span></li>';
+      }).join('');
+      return '<div class="stars__group"><p class="stars__group-head">' + esc(pathOf(+leaf)) +
+             '<span class="stars__group-count">' + groups[leaf].length + '</span></p>' +
+             '<ul class="stars__list">' + rows + '</ul></div>';
+    }).join('');
+    if (hit.length > shown) {
+      html += '<button type="button" class="stars__more">더 보기 (' +
+              (hit.length - shown).toLocaleString() + '개 남음)</button>';
+    }
+    main.innerHTML = html;
+    var more = main.querySelector('.stars__more');
+    if (more) more.addEventListener('click', function () { shown += PAGE * 2; render(); });
+  }
+})();
+</script>
