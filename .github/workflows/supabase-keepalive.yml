@@ -1,0 +1,32 @@
+# Supabase 무료 플랜은 7일간 요청이 없으면 프로젝트를 정지시킨다. 주 2회 가볍게 찔러 둔다.
+#
+# 알려진 한계: GitHub 은 저장소에 60일간 활동이 없으면 예약 워크플로를 자동 비활성화한다.
+# 장기간 방치하면 이 핑도 멈추므로 workflow_dispatch 로 수동 실행 경로를 함께 둔다.
+#
+# 설정: 저장소 Variables 에 SUPABASE_URL, SUPABASE_ANON_KEY 를 넣는다.
+# 둘 다 공개돼도 되는 값이라 Secrets 가 아니라 Variables 로 둔다.
+name: supabase-keepalive
+
+on:
+  schedule:
+    - cron: "0 3 * * 1,4"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: comments 테이블 조회
+        env:
+          URL: ${{ vars.SUPABASE_URL }}
+          KEY: ${{ vars.SUPABASE_ANON_KEY }}
+        run: |
+          if [ -z "$URL" ] || [ -z "$KEY" ]; then
+            echo "SUPABASE_URL / SUPABASE_ANON_KEY 변수가 없습니다. 건너뜁니다."
+            exit 0
+          fi
+          code=$(curl -sS -o /dev/null -w '%{http_code}' \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            "$URL/rest/v1/comments?select=id&limit=1")
+          echo "HTTP $code"
+          [ "$code" = "200" ]

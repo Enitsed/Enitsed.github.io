@@ -1,0 +1,63 @@
+---
+layout: default
+title: 글 작성
+description: 관리자 전용 글 발행 페이지.
+permalink: /admin/
+sitemap: false
+robots: noindex, nofollow
+---
+<div class="section admin"
+     id="admin"
+     data-url="{{ site.supabase_url }}"
+     data-key="{{ site.supabase_anon_key }}">
+  <p class="mono-label">$ new post</p>
+  <h1>글 작성</h1>
+
+  {%- unless site.supabase_url and site.supabase_url != "" and site.supabase_anon_key and site.supabase_anon_key != "" -%}
+  <p class="section-note">
+    Supabase 설정(<code>supabase_url</code>, <code>supabase_anon_key</code>)이 아직 비어 있습니다.
+    <code>_config.yml</code>에 값을 채우면 이 페이지가 활성화됩니다.
+  </p>
+  {%- else -%}
+  <p class="section-note">
+    작성한 글은 Edge Function을 거쳐 <code>_posts/</code>에 커밋됩니다.
+    커밋 후 GitHub Pages 빌드까지 1~2분 걸립니다.
+  </p>
+
+  <div class="admin__box" id="admin-signin" hidden>
+    <p class="comments__hint">발행하려면 관리자 계정으로 로그인해 주세요.</p>
+    <div class="comments__providers">
+      <button type="button" class="btn btn--ghost" data-provider="github">GitHub으로 로그인</button>
+      <button type="button" class="btn btn--ghost" data-provider="google">Google로 로그인</button>
+    </div>
+  </div>
+
+  <form class="admin__form" id="admin-form" hidden>
+    <div class="admin__me">
+      <span id="admin-me-name"></span>
+      <button type="button" class="comments__signout" id="admin-signout">로그아웃</button>
+    </div>
+
+    <label for="admin-title">제목</label>
+    <input type="text" id="admin-title" name="title" maxlength="120" required>
+
+    <label for="admin-slug">슬러그 <span class="admin__note">제목에서 자동 생성됩니다. 영문·숫자·하이픈만.</span></label>
+    <input type="text" id="admin-slug" name="slug" maxlength="120" pattern="[a-z0-9\-]+" required>
+
+    <label for="admin-tags">태그 <span class="admin__note">쉼표로 구분</span></label>
+    <input type="text" id="admin-tags" name="tags" maxlength="200">
+
+    <label for="admin-excerpt">요약</label>
+    <input type="text" id="admin-excerpt" name="excerpt" maxlength="200">
+
+    <label for="admin-body">본문 (마크다운)</label>
+    <textarea id="admin-body" name="body" rows="18" required></textarea>
+
+    <div class="admin__actions">
+      <button type="submit" class="btn btn--primary" id="admin-submit">발행</button>
+    </div>
+    <p class="admin__msg" id="admin-msg" role="status" hidden></p>
+  </form>
+  <script type="module" src="{{ '/assets/js/admin.js' | relative_url }}"></script>
+  {%- endunless -%}
+</div>
