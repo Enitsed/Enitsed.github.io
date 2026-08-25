@@ -110,13 +110,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: MiyaClub
-    # TODO: 실제 배포 네트워크와 컨트랙트 주소를 채워주세요
-    network: mainnet
+    network: mainnet          # 배포한 네트워크로 바꿉니다
     source:
       address: "0x0000000000000000000000000000000000000000"
       abi: MiyaClub
-      # TODO: 컨트랙트 배포 블록 번호를 채워주세요
-      startBlock: 0
+      startBlock: 0           # 컨트랙트 배포 블록 번호. 아래 참고
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -361,7 +359,7 @@ subgraph는 체인 헤드보다 항상 조금 뒤처져 있습니다.
 
 <!-- TODO: 실제로 운영하며 설정한 인덱싱 지연 임계치와 알림 구성을 채워주세요 -->
 
-## 정리
+## 배포하고 나면
 
 빌드와 배포는 CLI 세 줄이면 됩니다.
 
