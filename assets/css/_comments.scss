@@ -1,0 +1,107 @@
+// ── 댓글 ──
+.comments {
+  max-width: $maxw;
+  margin: 0 auto;
+  padding: 0 20px 64px;
+}
+
+.comments__status { color: $muted; font-size: 0.9rem; margin: 0 0 14px; }
+
+.comments__list { list-style: none; margin: 0 0 20px; padding: 0; }
+
+.comments__item {
+  border-top: 1px solid $border;
+  padding: 16px 0;
+}
+
+.comments__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.comments__avatar { border-radius: 50%; flex: none; }
+.comments__name { color: $heading; font-weight: 500; font-size: 0.92rem; }
+.comments__time { color: $muted; font-size: 0.78rem; }
+
+.comments__delete {
+  margin-left: auto;
+  background: none;
+  border: 0;
+  color: $muted;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+.comments__delete:hover { color: $pink; background: $surface; }
+.comments__delete[disabled] { opacity: 0.5; cursor: default; }
+
+.comments__body {
+  margin: 0;
+  white-space: pre-wrap;   // 본문은 textContent 로만 넣으므로 줄바꿈은 여기서 살린다
+  overflow-wrap: anywhere;
+  color: $text;
+}
+
+.comments__box {
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius;
+  padding: 18px;
+}
+
+.comments__hint { margin: 0 0 12px; color: $muted; font-size: 0.9rem; }
+.comments__providers { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.btn--ghost { border-color: $border; color: $text; }
+.btn--ghost:hover { border-color: $blue; color: $blue; }
+
+.comments__me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+.comments__me-name { color: $heading; font-weight: 500; }
+
+.comments__signout {
+  margin-left: auto;
+  background: none;
+  border: 0;
+  color: $muted;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.comments__signout:hover { color: $blue; }
+
+.comments__form textarea {
+  width: 100%;
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: 10px;
+  color: $text;
+  font: inherit;
+  padding: 12px;
+  resize: vertical;
+}
+.comments__form textarea:focus-visible { outline: 2px solid $blue; outline-offset: 1px; }
+
+.comments__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+.comments__count { color: $muted; font-family: $mono; font-size: 0.78rem; }
+.comments__actions .btn { margin-left: auto; }
+
+.comments__error {
+  margin: 12px 0 0;
+  color: $pink;
+  font-size: 0.88rem;
+}

@@ -1,0 +1,43 @@
+{%- comment -%}
+  댓글 — Supabase 설정이 채워졌을 때만 렌더링한다.
+  값이 비어 있으면 마크업도 스크립트도 나가지 않으므로, 키를 넣기 전까지는
+  글 페이지가 지금과 완전히 동일하게 동작한다.
+{%- endcomment -%}
+{%- if site.supabase_url and site.supabase_url != "" and site.supabase_anon_key and site.supabase_anon_key != "" -%}
+<section class="comments"
+         id="comments"
+         data-slug="{{ page.slug }}"
+         data-url="{{ site.supabase_url }}"
+         data-key="{{ site.supabase_anon_key }}"
+         data-admin="{{ site.admin_user_id }}">
+  <h2 class="mono-label">// comments</h2>
+
+  <p class="comments__status" id="comments-status" role="status">댓글을 불러오는 중…</p>
+  <ol class="comments__list" id="comments-list"></ol>
+
+  <div class="comments__box" id="comments-signin" hidden>
+    <p class="comments__hint">댓글을 쓰려면 로그인해 주세요. 표시 이름과 프로필 이미지만 사용합니다.</p>
+    <div class="comments__providers">
+      <button type="button" class="btn btn--ghost" data-provider="github">GitHub으로 로그인</button>
+      <button type="button" class="btn btn--ghost" data-provider="google">Google로 로그인</button>
+    </div>
+  </div>
+
+  <form class="comments__box comments__form" id="comments-form" hidden>
+    <div class="comments__me">
+      <img class="comments__avatar" id="comments-me-avatar" alt="" width="28" height="28" hidden>
+      <span class="comments__me-name" id="comments-me-name"></span>
+      <button type="button" class="comments__signout" id="comments-signout">로그아웃</button>
+    </div>
+    <label class="sr-only" for="comments-body">댓글 내용</label>
+    <textarea id="comments-body" name="body" rows="4" maxlength="2000"
+              placeholder="댓글을 남겨 주세요. (2000자까지)" required></textarea>
+    <div class="comments__actions">
+      <span class="comments__count" id="comments-count">0 / 2000</span>
+      <button type="submit" class="btn btn--primary" id="comments-submit">등록</button>
+    </div>
+    <p class="comments__error" id="comments-error" role="alert" hidden></p>
+  </form>
+</section>
+<script type="module" src="{{ '/assets/js/comments.js' | relative_url }}"></script>
+{%- endif -%}

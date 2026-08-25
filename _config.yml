@@ -11,6 +11,12 @@ lang: ko
 # Google Analytics 4 측정 ID (G-XXXXXXXXXX). 비어 있으면 로드하지 않음.
 ga4_id: ""
 
+# Supabase (댓글 · 글 발행). 셋 다 채워야 댓글 UI가 렌더링됨. anon key는 공개돼도 되는 값이고
+# 실제 방어선은 RLS 정책(supabase/schema.sql)이다.
+supabase_url: ""
+supabase_anon_key: ""
+admin_user_id: ""
+
 # 소셜 공유 기본 이미지 (페이지 프론트매터의 image: 로 개별 재정의 가능)
 og_image: /assets/img/og-default.png
 og_image_width: 1200
@@ -44,5 +50,6 @@ exclude:
   - README.md
   - LICENSE.txt
   - docs
+  - supabase
   - .superpowers
   - vendor
