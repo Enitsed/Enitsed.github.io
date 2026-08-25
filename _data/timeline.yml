@@ -1,16 +1,24 @@
-- period: 2022.02 – 현재
+- period: 2026.03 – 현재
+  org: ㈜아이스크림키즈
+  role: 백엔드/DevOps · 팀장
+  detail: 킨더보드(어린이집·유치원 교사 AI 어시스턴트) 개발. GitHub·Slack 연동 프로젝트 관리 자동화, GitLab CI/CD 배포 자동화.
+- period: 2025.04 – 2026.02
   org: ㈜핑거랩스
-  role: 백엔드/DevOps·스마트컨트랙트 · 팀장
-  detail: 엑스클루시브(NFT 스트리밍), 네고홈(부동산 중개), 선미야클럽·페이버릿(NFT/온체인).
+  role: 백엔드/DevOps · 팀장
+  detail: 광고 트래킹 인프라 정리로 비용 40% 절감, Apache Superset 기반 사업 데이터 시각화와 Read Replica ETL 파이프라인 구축. 네고홈 API·배포 환경 구성.
 - period: 2024.09 – 2025.04
   org: ㈜하이퍼코퍼레이션
   role: 백엔드/DevOps · 팀장
-  detail: 하이퍼라이프케어 레거시 마이그레이션·인프라 최적화.
+  detail: 하이퍼라이프케어 신규 개발. PHP→TypeScript 포팅, AWS Cognito 인증 전환, RDS Blue-Green 무중단 업그레이드.
+- period: 2022.02 – 2024.09
+  org: ㈜핑거랩스
+  role: 백엔드/DevOps·스마트컨트랙트 · 선임 매니저/팀장
+  detail: 엑스클루시브(NFT 스트리밍), 선미야클럽·페이버릿·페이버스테이션(NFT/온체인), 클레이튼 CN 노드 운영·거버넌스 참여.
 - period: 2020.08 – 2022.01
-  org: 핀스프로토콜 · 태그앤유니버스 · 케이제이글로비스
+  org: 케이제이글로비스 · 태그앤유니버스 · 핀스프로토콜
   role: 백엔드/스마트컨트랙트
-  detail: PeriFinance DeFi DEX·Oracle 컨트랙트 개발.
+  detail: PeriFinance DeFi DEX·Oracle 컨트랙트 개발·운영.
 - period: 2018.03 – 2019.08
   org: ㈜크루메이트
   role: 백엔드/서버개발
-  detail: CJ Cookit 신규 서비스(Spring) 개발·유지보수.
+  detail: CJ Cookit 신규 서비스(Spring) 마이페이지 개발·유지보수.
