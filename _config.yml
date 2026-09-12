@@ -9,7 +9,7 @@ baseurl: ""
 lang: ko
 
 # Google Analytics 4 측정 ID (G-XXXXXXXXXX). 비어 있으면 로드하지 않음.
-ga4_id: ""
+ga4_id: "G-0LLC2GL4VJ"
 
 # Supabase (댓글 · 글 발행). 셋 다 채워야 댓글 UI가 렌더링됨. anon key는 공개돼도 되는 값이고
 # 실제 방어선은 RLS 정책(supabase/schema.sql)이다.
