@@ -87,7 +87,7 @@ npm i @aws-sdk/cloudfront-signer
 
 TypeScript로 옮기면 다음과 같습니다.
 
-<!-- TODO: 엑스클루시브에서 실제로 사용한 쿠키 만료 시간(TTL) 값과 그 값을 고른 이유를 채워주세요 -->
+{% comment %} TODO: 엑스클루시브에서 실제로 사용한 쿠키 만료 시간(TTL) 값과 그 값을 고른 이유를 채워주세요 {% endcomment %}
 
 ```typescript
 import { getSignedCookies } from "@aws-sdk/cloudfront-signer";
@@ -191,7 +191,7 @@ API가 `api.example.com`이면 `Domain=.example.com`까지는 설정할 수 있�
 엑스클루시브에서는 2번 판정을 **ERC721 NFT 보유 여부**로 했습니다.
 콘텐츠마다 대응하는 컬렉션이 있고, 지갑이 그 토큰을 들고 있으면 재생 권한이 있는 구조입니다.
 
-<!-- TODO: 실제 NFT 보유 판정 로직(체인 RPC 직접 조회 / 인덱서 사용 여부, 캐싱 전략과 TTL)을 채워주세요 -->
+{% comment %} TODO: 실제 NFT 보유 판정 로직(체인 RPC 직접 조회 / 인덱서 사용 여부, 캐싱 전략과 TTL)을 채워주세요 {% endcomment %}
 
 ```typescript
 async function canAccessContent(address: string, contentId: string): Promise<boolean> {
@@ -206,7 +206,7 @@ async function canAccessContent(address: string, contentId: string): Promise<boo
 권한 회수를 빠르게 반영하려면 TTL을 짧게 잡고 플레이어가 주기적으로 갱신 요청을 보내야 합니다.
 TTL을 줄이면 갱신 요청이 늘어나니 트레이드오프를 어디에 둘지는 서비스 성격에 따라 다릅니다.
 
-<!-- TODO: 엑스클루시브에서 TTL과 갱신 주기를 어떻게 정했는지, 그 판단 근거를 채워주세요 -->
+{% comment %} TODO: 엑스클루시브에서 TTL과 갱신 주기를 어떻게 정했는지, 그 판단 근거를 채워주세요 {% endcomment %}
 
 ## 자주 겪는 함정
 
