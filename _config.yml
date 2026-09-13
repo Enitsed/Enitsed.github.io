@@ -16,7 +16,7 @@ ga4_id: "G-0LLC2GL4VJ"
 # 실제 방어선은 RLS 정책(supabase/schema.sql)이다.
 supabase_url: "https://fnanazowumjnpmfbsblv.supabase.co"
 supabase_anon_key: "sb_publishable_-C50ss64NfX9VzX1Yd3KlA_67UedZqY"
-admin_user_id: ""
+admin_user_id: "0ef28c85-b411-42c4-a3ce-be4722e6f97a"
 # 댓글 로그인 버튼으로 노출할 공급자. Supabase 대시보드에서 켜 둔 것만 나열한다.
 # 켜지 않은 공급자 버튼이 보이면 누르는 순간 "provider is not enabled" 오류가 난다.
 comment_providers: [github]
