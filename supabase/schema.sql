@@ -67,6 +67,10 @@ begin
   return new;
 end $$;
 
+-- 트리거 전용 SECURITY DEFINER 함수를 API 역할이 직접 실행하지 못하게 한다(Security Advisor 경고).
+-- 트리거 발동은 호출자의 EXECUTE 권한을 확인하지 않으므로 댓글 작성·속도 제한은 그대로 동작한다.
+revoke execute on function public.check_comment_rate_limit() from public, anon, authenticated;
+
 create trigger comments_rate_limit
   before insert on public.comments
   for each row execute function public.check_comment_rate_limit();

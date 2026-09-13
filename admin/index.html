@@ -46,7 +46,7 @@ robots: noindex, nofollow
     <label for="admin-title">제목</label>
     <input type="text" id="admin-title" name="title" maxlength="120" required>
 
-    <label for="admin-slug">슬러그 <span class="admin__note">제목에서 자동 생성됩니다. 영문·숫자·하이픈만.</span></label>
+    <label for="admin-slug">슬러그 <span class="admin__note">영문 소문자·숫자·하이픈만. 제목의 영문·숫자로 자동 생성되며, 한글 제목이면 직접 입력하세요.</span></label>
     <input type="text" id="admin-slug" name="slug" maxlength="120" pattern="[a-z0-9\-]+" required>
 
     <label for="admin-tags">태그 <span class="admin__note">쉼표로 구분</span></label>

@@ -149,11 +149,13 @@ function init(root) {
   async function remove(id, btn) {
     if (!window.confirm("이 댓글을 삭제할까요?")) return;
     btn.disabled = true;
-    const { error } = await sb
+    // RLS 에 걸리면 오류 없이 0건만 갱신되므로, 갱신된 행을 돌려받아 실제로 지워졌는지 확인한다.
+    const { data, error } = await sb
       .from("comments")
       .update({ deleted_at: new Date().toISOString() })
-      .eq("id", id);
-    if (error) {
+      .eq("id", id)
+      .select("id");
+    if (error || !data?.length) {
       btn.disabled = false;
       setError("삭제하지 못했습니다. 잠시 후 다시 시도해 주세요.");
       return;

@@ -39,7 +39,7 @@ Cognito에는 **User Migration 트리거**가 있습니다.
 
 흐름은 이렇습니다.
 
-```
+```text
 로그인 시도
    │
    ▼

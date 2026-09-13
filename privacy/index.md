@@ -55,6 +55,7 @@ Google Analytics 4가 수집한 데이터는 GA4 속성에 설정된 기본 보�
 | Google LLC | 웹폰트 제공 (Google Fonts) |
 | GitHub, Inc. | 사이트 호스팅 (GitHub Pages) |
 {% if site.supabase_url != "" %}| Supabase, Inc. | 댓글 저장 및 로그인 처리 |
+| GitHub, Inc. / Google LLC | 댓글 소셜 로그인 (선택한 계정의 인증) |
 {% endif %}
 
 ## 문의

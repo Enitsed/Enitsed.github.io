@@ -30,13 +30,17 @@ function init(root) {
     slugTouched = true;
   });
 
+  // 서버(SLUG_RE)와 입력란 pattern 이 영문 소문자·숫자·하이픈만 허용하므로 여기서도 같은 규칙을 쓴다.
+  // 한글을 남기면 자동 생성된 슬러그가 검증에 걸려 발행 버튼이 조용히 막힌다.
+  // 한글만 있는 제목은 빈 슬러그가 되고, 사용자가 직접 입력해야 한다.
   function slugify(s) {
     return s
       .toLowerCase()
-      .replace(/[^a-z0-9가-힣\s-]/g, "")
+      .replace(/[^a-z0-9\s-]/g, "")
       .trim()
       .replace(/\s+/g, "-")
       .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "")
       .slice(0, 120);
   }
 
