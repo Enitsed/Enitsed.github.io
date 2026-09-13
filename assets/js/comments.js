@@ -25,6 +25,7 @@ function init(root) {
   const meAvatarEl = $("comments-me-avatar");
 
   let session = null;
+  const RETURN_KEY = "comments:returning";
 
   // ── 조회 · 렌더 ──────────────────────────────────────────────
   async function load() {
@@ -196,9 +197,14 @@ function init(root) {
     const btn = e.target.closest("[data-provider]");
     if (!btn) return;
     // 로그인 후 읽던 글로 되돌아온다.
+    // 해시는 반드시 뗀다. 토큰이 URL 해시(#access_token=…)로 돌아오기 때문에, 원래 주소에
+    // #comments 같은 해시가 있으면 해시가 두 번 겹쳐 세션을 읽지 못하고 로그인이 조용히 사라진다.
+    const back = new URL(location.href);
+    back.hash = "";
+    sessionStorage.setItem(RETURN_KEY, "1");
     sb.auth.signInWithOAuth({
       provider: btn.dataset.provider,
-      options: { redirectTo: location.href },
+      options: { redirectTo: back.toString() },
     });
   });
 
@@ -219,6 +225,11 @@ function init(root) {
   (async () => {
     const { data } = await sb.auth.getSession();
     applySession(data.session);
+    // 방금 로그인하고 돌아온 경우 해시를 뗐으므로 댓글 위치로 직접 이동시킨다.
+    if (sessionStorage.getItem(RETURN_KEY)) {
+      sessionStorage.removeItem(RETURN_KEY);
+      if (data.session) root.scrollIntoView();
+    }
     updateCount();
     await load();
   })();
