@@ -125,9 +125,12 @@ function init(root) {
   signinEl.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-provider]");
     if (!btn) return;
+    // 복귀 주소에서 해시를 뗀다. 토큰이 URL 해시로 돌아오므로 해시가 겹치면 세션을 읽지 못한다.
+    const back = new URL(location.href);
+    back.hash = "";
     sb.auth.signInWithOAuth({
       provider: btn.dataset.provider,
-      options: { redirectTo: location.href },
+      options: { redirectTo: back.toString() },
     });
   });
 

@@ -27,8 +27,13 @@ robots: noindex, nofollow
   <div class="admin__box" id="admin-signin" hidden>
     <p class="comments__hint">발행하려면 관리자 계정으로 로그인해 주세요.</p>
     <div class="comments__providers">
+      {%- assign providers = site.comment_providers | default: "github,google" -%}
+      {%- if providers contains "github" %}
       <button type="button" class="btn btn--ghost" data-provider="github">GitHub으로 로그인</button>
+      {%- endif %}
+      {%- if providers contains "google" %}
       <button type="button" class="btn btn--ghost" data-provider="google">Google로 로그인</button>
+      {%- endif %}
     </div>
   </div>
 
