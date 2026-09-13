@@ -7,6 +7,7 @@ email: sllki1@naver.com
 url: "https://enitsed.github.io"
 baseurl: ""
 lang: ko
+timezone: Asia/Seoul
 
 # Google Analytics 4 측정 ID (G-XXXXXXXXXX). 비어 있으면 로드하지 않음.
 ga4_id: "G-0LLC2GL4VJ"
