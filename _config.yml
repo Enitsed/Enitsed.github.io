@@ -14,9 +14,12 @@ ga4_id: "G-0LLC2GL4VJ"
 
 # Supabase (댓글 · 글 발행). 셋 다 채워야 댓글 UI가 렌더링됨. anon key는 공개돼도 되는 값이고
 # 실제 방어선은 RLS 정책(supabase/schema.sql)이다.
-supabase_url: ""
-supabase_anon_key: ""
+supabase_url: "https://fnanazowumjnpmfbsblv.supabase.co"
+supabase_anon_key: "sb_publishable_-C50ss64NfX9VzX1Yd3KlA_67UedZqY"
 admin_user_id: ""
+# 댓글 로그인 버튼으로 노출할 공급자. Supabase 대시보드에서 켜 둔 것만 나열한다.
+# 켜지 않은 공급자 버튼이 보이면 누르는 순간 "provider is not enabled" 오류가 난다.
+comment_providers: [github]
 
 # 소셜 공유 기본 이미지 (페이지 프론트매터의 image: 로 개별 재정의 가능)
 og_image: /assets/img/og-default.png

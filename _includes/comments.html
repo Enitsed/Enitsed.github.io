@@ -18,8 +18,13 @@
   <div class="comments__box" id="comments-signin" hidden>
     <p class="comments__hint">댓글을 쓰려면 로그인해 주세요. 표시 이름과 프로필 이미지만 사용합니다.</p>
     <div class="comments__providers">
+      {%- assign providers = site.comment_providers | default: "github,google" -%}
+      {%- if providers contains "github" %}
       <button type="button" class="btn btn--ghost" data-provider="github">GitHub으로 로그인</button>
+      {%- endif %}
+      {%- if providers contains "google" %}
       <button type="button" class="btn btn--ghost" data-provider="google">Google로 로그인</button>
+      {%- endif %}
     </div>
   </div>
 

@@ -13,7 +13,7 @@ sitemap: false
 # 개인정보처리방침
 
 이 사이트(`enitsed.github.io`)가 수집하는 정보와 그 처리 방식을 정리한 문서입니다.
-최종 수정일: {% if site.supabase_url != "" %}2026-08-25{% else %}2026-08-15{% endif %}
+최종 수정일: {% if site.supabase_url != "" %}2026-09-13{% else %}2026-08-15{% endif %}
 
 ## 웹폰트 (Google Fonts)
 
@@ -45,7 +45,7 @@ sitemap: false
 
 ## 보관 기간 및 국외 이전
 
-Google Analytics 4가 수집한 데이터는 GA4 속성에 설정된 기본 보관 기간 동안 저장됩니다. 설정값은 GA4 관리자 화면에서 확인할 수 있습니다. Google LLC와 GitHub, Inc.{% if site.supabase_url != "" %}, Supabase, Inc.{% endif %}는 모두 대한민국 밖(미국)의 서버에서 데이터를 처리합니다.{% if site.supabase_url != "" %} 댓글 데이터는 삭제 요청 전까지 보관됩니다.{% endif %}
+Google Analytics 4가 수집한 데이터는 GA4 속성에 설정된 기본 보관 기간 동안 저장됩니다. 설정값은 GA4 관리자 화면에서 확인할 수 있습니다. Google LLC와 GitHub, Inc.는 대한민국 밖(미국)의 서버에서 데이터를 처리합니다.{% if site.supabase_url != "" %} 댓글 데이터는 Supabase, Inc.가 운영하는 서울 리전(대한민국)의 서버에 저장되며, 삭제 요청 전까지 보관됩니다.{% endif %}
 
 ## 처리 위탁
 
