@@ -122,7 +122,9 @@ Deno.serve(async (req) => {
     excerpt ? `excerpt: ${yamlString(excerpt)}` : null,
     "---",
     "",
-  ].filter(Boolean).join("\n");
+  // null 만 걸러낸다. filter(Boolean) 은 마지막 빈 문자열까지 지워 닫는 --- 뒤 줄바꿈이 사라지고,
+  // 본문이 구분선에 붙어(---본문) 프론트매터 전체가 본문으로 렌더된다.
+  ].filter((line) => line !== null).join("\n");
 
   const path = `_posts/${date}-${slug}.md`;
   const gh = {
