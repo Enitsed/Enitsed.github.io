@@ -36,6 +36,14 @@ create policy comments_update on public.comments
   using (auth.uid() = user_id or auth.uid() = '<ADMIN_UUID>')
   with check (auth.uid() = user_id or auth.uid() = '<ADMIN_UUID>');
 
+-- 작성자·관리자는 자기가 소프트 삭제한 행도 볼 수 있어야 한다.
+-- WHERE 가 있는 UPDATE 는 "바뀐 뒤의 행"에도 SELECT 정책을 적용한다. 위 comments_select 만 있으면
+-- deleted_at 을 채운 새 행이 보이지 않게 되어 삭제가 42501 로 거부된다. 정책은 OR 로 합쳐지므로
+-- 다른 방문자에게는 여전히 삭제된 댓글이 보이지 않는다. (화면은 조회 시 deleted_at is null 로 거른다)
+create policy comments_select_own_deleted on public.comments
+  for select to authenticated
+  using (auth.uid() = user_id or auth.uid() = '<ADMIN_UUID>');
+
 -- DELETE 정책은 만들지 않는다. RLS 가 기본 거부하므로 물리 삭제 경로가 닫힌다.
 
 -- 속도 제한: 1분에 5개
